@@ -1,6 +1,6 @@
 
 
-/*
+
 var data = {
     stores: {
         "WinCo" : [],
@@ -18,10 +18,9 @@ var data = {
     },
     selectedStore: "WinCo",
 };
-*/
 
 
-
+/*
 var data = {
     stores: {
     },
@@ -29,6 +28,7 @@ var data = {
     },
     selectedStore: "",
 };
+*/
 
 
 
@@ -155,6 +155,16 @@ function ShowSelectedStore() {
 }
 
 
+function ResetList() {
+    for (const category of Object.keys(data.categories)) {
+        for (const item of Object.keys(data.categories[category])) {
+            data["categories"][category][item] = true;
+        }
+    }
+    Refresh();
+}
+
+
 function RefreshMainPage() {
     let s = [];
     let stores = Object.keys(data.stores);
@@ -190,6 +200,8 @@ function RefreshMainPage() {
             }
             s.push(`</div><p></p>`);
         }
+        const resetList = `<button onclick="ResetList();" class="w3-btn w3-indigo">Reset List</button>`;
+        s.push(resetList);
     }
     SetDisplay(s.join(""));
     ShowSelectedStore();
@@ -561,7 +573,7 @@ function Load() {
 
 
 function Begin() {
-    Load();
+    //Load();
     Refresh();
 }
 
