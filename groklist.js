@@ -462,8 +462,8 @@ function RefreshStorePage() {
         for (const category of data.stores[store]) {
             const div = `<div>
             <div class="w3-container w3-pale-red" style="float: right; font-size: x-large;">
-            <span onclick="MoveUpCat('${store}', '${category}');">&#11165;</span> &nbsp; &nbsp;
-            <span onclick="MoveDownCat('${store}', '${category}');">&#11167;</span> &nbsp;
+            <b><span onclick="MoveUpCat('${store}', '${category}');">&uArr;</span> &nbsp; &nbsp;
+            <span onclick="MoveDownCat('${store}', '${category}');">&dArr;</span> &nbsp;</b>
             </div>
             <div style="float: none;">${category}</div>
             </div>
