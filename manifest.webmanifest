@@ -1,0 +1,21 @@
+{
+    "short_name": "Groklist",
+    "name": "Groklist",
+    "description": "Grocery Lists",
+    "icons": [
+      {
+        "src": "logo-192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "logo-512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "index.html",
+    "background_color": "#2196f3",
+    "display": "standalone",
+    "theme_color": "#2196f3"
+  }
