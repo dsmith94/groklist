@@ -573,7 +573,7 @@ function Load() {
 
 
 function Begin() {
-    //Load();
+    Load();
     Refresh();
 }
 
