@@ -1,6 +1,6 @@
 
 
-
+/*
 var data = {
     stores: {
         "WinCo" : [],
@@ -18,9 +18,9 @@ var data = {
     },
     selectedStore: "WinCo",
 };
+*/
 
 
-/*
 var data = {
     stores: {
     },
@@ -28,7 +28,7 @@ var data = {
     },
     selectedStore: "",
 };
-*/
+
 
 
 
