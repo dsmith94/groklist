@@ -29,6 +29,8 @@ var data = {
     selectedStore: "",
 };
 
+var exploded = true;
+
 
 
 
@@ -168,6 +170,8 @@ function ResetList() {
 function RefreshMainPage() {
     let s = [];
     let stores = Object.keys(data.stores);
+    const explodedDisplay = (exploded) ? `block` : `none`;
+    exploded = false;
     if (stores.length > 0) {
         stores.sort((a, b) => a.localeCompare(b));
         let m = `<div class="w3-card" style="float: none;"><div class="w3-blue"><h3>Store</h3></div>
@@ -183,20 +187,19 @@ function RefreshMainPage() {
     }
     if (data.selectedStore) {
         for (const category of data.stores[data.selectedStore]) {
-            const buttonCode = `<button onclick="ToggleAccordion('${category}');" class="w3-btn w3-blue">${category}</button>`;
-            const divCode = `<div class="w3-panel w3-pale-blue" id="pn_${category}" style="display: none; overflow: hidden;">`;
+            const buttonCode = `<button onclick="ToggleAccordion('${category}');" class="w3-btn w3-blue" style="width:90%;">${category}</button>`;
+            const divCode = `<div class="w3-panel w3-pale-blue" id="pn_${category}" style="display: ${explodedDisplay}; overflow: hidden;">`;
             s.push(`${buttonCode}`);
             s.push(`${divCode}`);
-            const keys = Object.keys(data.categories[category]);
-            keys.sort((a, b) => a.localeCompare(b));
-            for (const label of keys) {
-                const item = data.categories[category][label];
-                if (item === true) {
-                    s.push(`<p onclick="ToggleStrike('${category}', '${label}');">${label}</p>`);
-                }
-                else if (item === false) {
-                    s.push(`<p onclick="ToggleStrike('${category}', '${label}');" style="text-decoration:line-through;">${label}</p>`);
-                }
+            const listToGet = Object.keys(data.categories[category]).filter(x => data.categories[category][x] === true);
+            const listToSkip = Object.keys(data.categories[category]).filter(x => data.categories[category][x] === false);
+            listToGet.sort((a, b) => a.localeCompare(b));
+            listToSkip.sort((a, b) => a.localeCompare(b));
+            for (const label of listToGet) {
+                s.push(`<p onclick="ToggleStrike('${category}', '${label}');">${label}</p>`);
+            }
+            for (const label of listToSkip) {
+                s.push(`<p onclick="ToggleStrike('${category}', '${label}');" style="text-decoration:line-through;">${label}</p>`);
             }
             s.push(`</div><p></p>`);
         }
@@ -458,9 +461,10 @@ function RefreshStorePage() {
         s.push(h);
         for (const category of data.stores[store]) {
             const div = `<div>
-            <div style="float: right; font-size: large;">
-            <span onclick="MoveUpCat('${store}', '${category}');">&uarr;</span> &nbsp;
-            <span onclick="MoveDownCat('${store}', '${category}');">&darr;</span> &nbsp;</div>
+            <div class="w3-container w3-pale-red" style="float: right; font-size: x-large;">
+            <span onclick="MoveUpCat('${store}', '${category}');">&#11165;</span> &nbsp; &nbsp;
+            <span onclick="MoveDownCat('${store}', '${category}');">&#11167;</span> &nbsp;
+            </div>
             <div style="float: none;">${category}</div>
             </div>
             <br>
@@ -569,6 +573,12 @@ function Load() {
     if (s) {
         data = JSON.parse(s);
     }
+}
+
+
+
+function ExplodeList() {
+
 }
 
 
