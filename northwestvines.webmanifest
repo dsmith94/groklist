@@ -8,7 +8,7 @@
         "type": "image/ico",
         "sizes": "100x101"
       },
-    ]
+    ],
     "start_url": "https://www.northwestvines.com",
     "background_color": "#000000",
     "display": "standalone",
