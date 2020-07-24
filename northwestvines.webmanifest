@@ -9,6 +9,7 @@
         "sizes": "100x101"
       },
     ],
+    "scope": "https://www.northwestvines.com",
     "start_url": "https://www.northwestvines.com",
     "background_color": "#000000",
     "display": "standalone",
